@@ -1,0 +1,22 @@
+.bg-img {
+  min-height: 100vh;
+  background: linear-gradient(150deg, #3498db, #8e44ad);
+  width: 100%;
+}
+
+ion-card {
+  transform: translateY(65%);
+}
+
+.Login {
+  padding-top: 14px;
+  padding-bottom: 40px;
+}
+button {
+  height: 38px;
+  width: 120px;
+  color: white;
+  float: right;
+  outline: none;
+  background-color: blueviolet;
+}
