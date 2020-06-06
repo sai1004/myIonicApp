@@ -1,36 +1,57 @@
 <ion-header>
-  <ion-toolbar text-center>
+  <ion-toolbar class="ion-text-center">
     <ion-title> Shopping List </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
   <form #ShoppingListForm="ngForm" novalidate>
     <ion-list>
       <ion-item>
-        <ion-label position="floating"> Name </ion-label>
-        <ion-input type="text" name="name" [(ngModel)]="shopping.name" clearInput required></ion-input>
+        <ion-label position="fixed"> Name </ion-label>
+        <ion-input
+          type="text"
+          name="name"
+          [(ngModel)]="shopping.name"
+          clearInput
+          required
+        ></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating"> Amount </ion-label>
-        <ion-input type="text" name="amount" [(ngModel)]="shopping.amount" clearInput required></ion-input>
+        <ion-label position="fixed"> Amount </ion-label>
+        <ion-input
+          type="text"
+          name="amount"
+          [(ngModel)]="shopping.amount"
+          clearInput
+          required
+        ></ion-input>
       </ion-item>
     </ion-list>
 
-
-    <ion-button [disabled]="!ShoppingListForm.valid" (click)="addItem(ShoppingListForm.value)"> add Item
+    <ion-button
+      block
+      full
+      [disabled]="!ShoppingListForm.valid"
+      (click)="addItem(ShoppingListForm.value)"
+    >
+      add Item
     </ion-button>
-    <ion-button (click)="clearItems(ShoppingListForm)"> Clear </ion-button>
 
-
+    <ion-button
+      block
+      full
+      [disabled]="ShoppingListForm.valid"
+      (click)="clearItems(ShoppingListForm)"
+    >
+      Clear
+    </ion-button>
   </form>
 
   <ion-list>
     <ion-item *ngFor="let item of shoppingList">
-
       <h5>{{ item.name }} <span> {{ item.amount }} </span></h5>
-
     </ion-item>
   </ion-list>
 </ion-content>
