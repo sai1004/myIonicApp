@@ -28,7 +28,7 @@
   <ion-list class="scroll-items">
     <ion-item *ngFor="let i = index; let item of savedList">
       <h5>{{ item.name }} <span> {{ item.amount }} </span></h5>
-      <ion-button slot="end" (click)="onRemove(i)" color="secondary">
+      <ion-button slot="end" (click)="deleteActionSheet(i)" color="secondary">
         <ion-icon name="trash"></ion-icon>
       </ion-button>
     </ion-item>
