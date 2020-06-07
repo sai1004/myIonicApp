@@ -213,7 +213,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>recipe-list</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content> </ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar class=\"ion-text-center\" color=\"primary\">\n    <ion-title> Recipe List</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\n\n\n</ion-content>\n";
     /***/
   },
 
@@ -233,7 +233,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar class=\"ion-text-center\">\n    <ion-title> Shopping List </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n  <form #ShoppingListForm=\"ngForm\" novalidate>\n    <ion-list>\n      <ion-item>\n        <ion-label position=\"fixed\"> Name </ion-label>\n        <ion-input\n          type=\"text\"\n          name=\"name\"\n          [(ngModel)]=\"shopping.name\"\n          clearInput\n          required\n        ></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"fixed\"> Amount </ion-label>\n        <ion-input\n          type=\"text\"\n          name=\"amount\"\n          [(ngModel)]=\"shopping.amount\"\n          clearInput\n          required\n        ></ion-input>\n      </ion-item>\n    </ion-list>\n\n    <ion-button\n      block\n      full\n      [disabled]=\"!ShoppingListForm.valid\"\n      (click)=\"addItem(ShoppingListForm.value)\"\n    >\n      add Item\n    </ion-button>\n\n    <ion-button\n      block\n      full\n      [disabled]=\"ShoppingListForm.valid\"\n      (click)=\"clearItems(ShoppingListForm)\"\n    >\n      Clear\n    </ion-button>\n  </form>\n\n  <ion-list>\n    <ion-item *ngFor=\"let item of shoppingList\">\n      <h5>{{ item.name }} <span> {{ item.amount }} </span></h5>\n    </ion-item>\n  </ion-list>\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar class=\"ion-text-center\" color=\"primary\">\n    <ion-title> Shopping List </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n  <form #ShoppingListForm=\"ngForm\" (ngSubmit)=\"onAddItem(ShoppingListForm.value)\">\n    <ion-list>\n      <ion-item>\n        <ion-label position=\"fixed\"> Name </ion-label>\n        <ion-input type=\"text\" name=\"name\" [(ngModel)]=\"shoppingList.name\" placeholder=\"Milk\" clearInput required>\n        </ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"fixed\"> Amount </ion-label>\n        <ion-input type=\"number\" name=\"amount\" [(ngModel)]=\"shoppingList.amount\" placeholder=\"35\" clearInput required>\n        </ion-input>\n      </ion-item>\n    </ion-list>\n\n    <ion-button type=\"submit\" expand=\"block\" [disabled]=\"!ShoppingListForm.valid\">\n      add Item\n    </ion-button>\n  </form>\n\n  <ion-list class=\"scroll-items\">\n    <ion-item *ngFor=\"let i = index; let item of savedList\">\n      <h5>{{ item.name }} <span> {{ item.amount }} </span></h5>\n      <ion-button slot=\"end\" (click)=\"deleteActionSheet(i)\" color=\"secondary\">\n        <ion-icon name=\"trash\"></ion-icon>\n      </ion-button>\n    </ion-item>\n  </ion-list>\n\n</ion-content>";
     /***/
   },
 
@@ -1123,6 +1123,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "./src/app/entities/ShoppingList.ts":
+  /*!******************************************!*\
+    !*** ./src/app/entities/ShoppingList.ts ***!
+    \******************************************/
+
+  /*! exports provided: ShoppingList */
+
+  /***/
+  function srcAppEntitiesShoppingListTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ShoppingList", function () {
+      return ShoppingList;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+
+    var ShoppingList = function ShoppingList() {
+      _classCallCheck(this, ShoppingList);
+    };
+    /***/
+
+  },
+
+  /***/
   "./src/app/pages/dashboard/dashboard.component.scss":
   /*!**********************************************************!*\
     !*** ./src/app/pages/dashboard/dashboard.component.scss ***!
@@ -1507,39 +1540,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/pages/shopping-list/Shopping.ts":
-  /*!*************************************************!*\
-    !*** ./src/app/pages/shopping-list/Shopping.ts ***!
-    \*************************************************/
-
-  /*! exports provided: Shopping */
-
-  /***/
-  function srcAppPagesShoppingListShoppingTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "Shopping", function () {
-      return Shopping;
-    });
-    /* harmony import */
-
-
-    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! tslib */
-    "./node_modules/tslib/tslib.es6.js");
-
-    var Shopping = function Shopping() {
-      _classCallCheck(this, Shopping);
-    };
-    /***/
-
-  },
-
-  /***/
   "./src/app/pages/shopping-list/shopping-list-routing.module.ts":
   /*!*********************************************************************!*\
     !*** ./src/app/pages/shopping-list/shopping-list-routing.module.ts ***!
@@ -1660,6 +1660,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _shopping_list_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./shopping-list.page */
     "./src/app/pages/shopping-list/shopping-list.page.ts");
+    /* harmony import */
+
+
+    var _services_shopping_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ../../services/shopping.service */
+    "./src/app/services/shopping.service.ts");
 
     var ShoppingListPageModule = function ShoppingListPageModule() {
       _classCallCheck(this, ShoppingListPageModule);
@@ -1667,7 +1673,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     ShoppingListPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _shopping_list_routing_module__WEBPACK_IMPORTED_MODULE_5__["ShoppingListPageRoutingModule"]],
-      declarations: [_shopping_list_page__WEBPACK_IMPORTED_MODULE_6__["ShoppingListPage"]]
+      declarations: [_shopping_list_page__WEBPACK_IMPORTED_MODULE_6__["ShoppingListPage"]],
+      providers: [_services_shopping_service__WEBPACK_IMPORTED_MODULE_7__["ShoppingService"]]
     })], ShoppingListPageModule);
     /***/
   },
@@ -1688,7 +1695,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Nob3BwaW5nLWxpc3Qvc2hvcHBpbmctbGlzdC5wYWdlLnNjc3MifQ== */";
+    __webpack_exports__["default"] = ".scroll-items {\n  height: 60vh;\n  overflow: scroll;\n}\n\n.flex-row {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.action-sheets-basic-page .ion-md-share {\n  color: #ed4248;\n}\n\n.action-sheets-basic-page .ion-md-arrow-dropright-circle {\n  color: #508ae4;\n}\n\n.action-sheets-basic-page .ion-md-heart-outline {\n  color: #31d55f;\n}\n\n.action-sheets-basic-page .action-sheet-cancel ion-icon,\n.action-sheets-basic-page .action-sheet-destructive ion-icon {\n  color: #757575;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3N0YWZmL3dvcmsvdGVtcC9teUlvbmljQXBwL3NyYy9hcHAvcGFnZXMvc2hvcHBpbmctbGlzdC9zaG9wcGluZy1saXN0LnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvc2hvcHBpbmctbGlzdC9zaG9wcGluZy1saXN0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFlBQUE7RUFDQSxnQkFBQTtBQ0NGOztBREVBO0VBQ0UsYUFBQTtFQUNBLG1CQUFBO0VBQ0EsOEJBQUE7RUFDQSxtQkFBQTtBQ0NGOztBREdFO0VBQ0UsY0FBQTtBQ0FKOztBREVFO0VBQ0UsY0FBQTtBQ0FKOztBREVFO0VBQ0UsY0FBQTtBQ0FKOztBREVFOztFQUVFLGNBQUE7QUNBSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Nob3BwaW5nLWxpc3Qvc2hvcHBpbmctbGlzdC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2Nyb2xsLWl0ZW1zIHtcbiAgaGVpZ2h0OiA2MHZoO1xuICBvdmVyZmxvdzogc2Nyb2xsO1xufVxuXG4uZmxleC1yb3cge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5hY3Rpb24tc2hlZXRzLWJhc2ljLXBhZ2Uge1xuICAuaW9uLW1kLXNoYXJlIHtcbiAgICBjb2xvcjogI2VkNDI0ODtcbiAgfVxuICAuaW9uLW1kLWFycm93LWRyb3ByaWdodC1jaXJjbGUge1xuICAgIGNvbG9yOiAjNTA4YWU0O1xuICB9XG4gIC5pb24tbWQtaGVhcnQtb3V0bGluZSB7XG4gICAgY29sb3I6ICMzMWQ1NWY7XG4gIH1cbiAgLmFjdGlvbi1zaGVldC1jYW5jZWwgaW9uLWljb24sXG4gIC5hY3Rpb24tc2hlZXQtZGVzdHJ1Y3RpdmUgaW9uLWljb24ge1xuICAgIGNvbG9yOiAjNzU3NTc1O1xuICB9XG59XG4iLCIuc2Nyb2xsLWl0ZW1zIHtcbiAgaGVpZ2h0OiA2MHZoO1xuICBvdmVyZmxvdzogc2Nyb2xsO1xufVxuXG4uZmxleC1yb3cge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5hY3Rpb24tc2hlZXRzLWJhc2ljLXBhZ2UgLmlvbi1tZC1zaGFyZSB7XG4gIGNvbG9yOiAjZWQ0MjQ4O1xufVxuLmFjdGlvbi1zaGVldHMtYmFzaWMtcGFnZSAuaW9uLW1kLWFycm93LWRyb3ByaWdodC1jaXJjbGUge1xuICBjb2xvcjogIzUwOGFlNDtcbn1cbi5hY3Rpb24tc2hlZXRzLWJhc2ljLXBhZ2UgLmlvbi1tZC1oZWFydC1vdXRsaW5lIHtcbiAgY29sb3I6ICMzMWQ1NWY7XG59XG4uYWN0aW9uLXNoZWV0cy1iYXNpYy1wYWdlIC5hY3Rpb24tc2hlZXQtY2FuY2VsIGlvbi1pY29uLFxuLmFjdGlvbi1zaGVldHMtYmFzaWMtcGFnZSAuYWN0aW9uLXNoZWV0LWRlc3RydWN0aXZlIGlvbi1pY29uIHtcbiAgY29sb3I6ICM3NTc1NzU7XG59Il19 */";
     /***/
   },
 
@@ -1726,38 +1733,106 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _Shopping__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./Shopping */
-    "./src/app/pages/shopping-list/Shopping.ts");
+    var _services_shopping_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../../services/shopping.service */
+    "./src/app/services/shopping.service.ts");
+    /* harmony import */
+
+
+    var _entities_ShoppingList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../../entities/ShoppingList */
+    "./src/app/entities/ShoppingList.ts");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
 
     var ShoppingListPage = /*#__PURE__*/function () {
-      function ShoppingListPage() {
+      function ShoppingListPage(platform, actionSheetCtrl, _shoppingListService) {
         _classCallCheck(this, ShoppingListPage);
 
-        this.shoppingList = [];
-        this.shopping = new _Shopping__WEBPACK_IMPORTED_MODULE_2__["Shopping"]();
+        this.platform = platform;
+        this.actionSheetCtrl = actionSheetCtrl;
+        this._shoppingListService = _shoppingListService;
+        this.shoppingList = new _entities_ShoppingList__WEBPACK_IMPORTED_MODULE_3__["ShoppingList"]();
+        this.savedList = _shoppingListService.getItems();
       }
 
       _createClass(ShoppingListPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {}
       }, {
-        key: "addItem",
-        value: function addItem(list) {
-          this.shoppingList.push(list);
-          list.resetForm();
+        key: "onAddItem",
+        value: function onAddItem(list) {
+          this._shoppingListService.addItem(list);
         }
       }, {
-        key: "clearItems",
-        value: function clearItems(listForm) {
-          listForm.rest();
+        key: "onRemove",
+        value: function onRemove(index) {
+          this._shoppingListService.removeItem(index);
+        }
+      }, {
+        key: "deleteActionSheet",
+        value: function deleteActionSheet(index) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this2 = this;
+
+            var actionSheet;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.actionSheetCtrl.create({
+                      cssClass: "action-sheets-basic-page",
+                      buttons: [{
+                        text: "Delete",
+                        role: "destructive",
+                        icon: !this.platform.is("ios") ? "trash" : null,
+                        handler: function handler() {
+                          _this2.onRemove(index);
+                        }
+                      }, {
+                        text: "Cancel",
+                        role: "cancel",
+                        icon: !this.platform.is("ios") ? "close" : null,
+                        handler: function handler() {
+                          console.log("Cancel clicked");
+                        }
+                      }]
+                    });
+
+                  case 2:
+                    actionSheet = _context.sent;
+                    _context.next = 5;
+                    return actionSheet.present();
+
+                  case 5:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
         }
       }]);
 
       return ShoppingListPage;
     }();
 
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _Shopping__WEBPACK_IMPORTED_MODULE_2__["Shopping"])], ShoppingListPage.prototype, "shopping", void 0);
+    ShoppingListPage.ctorParameters = function () {
+      return [{
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ActionSheetController"]
+      }, {
+        type: _services_shopping_service__WEBPACK_IMPORTED_MODULE_2__["ShoppingService"]
+      }];
+    };
+
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _entities_ShoppingList__WEBPACK_IMPORTED_MODULE_3__["ShoppingList"])], ShoppingListPage.prototype, "shoppingList", void 0);
     ShoppingListPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: "app-shopping-list",
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
@@ -1766,7 +1841,73 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./shopping-list.page.scss */
       "./src/app/pages/shopping-list/shopping-list.page.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])], ShoppingListPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ActionSheetController"], _services_shopping_service__WEBPACK_IMPORTED_MODULE_2__["ShoppingService"]])], ShoppingListPage);
+    /***/
+  },
+
+  /***/
+  "./src/app/services/shopping.service.ts":
+  /*!**********************************************!*\
+    !*** ./src/app/services/shopping.service.ts ***!
+    \**********************************************/
+
+  /*! exports provided: ShoppingService */
+
+  /***/
+  function srcAppServicesShoppingServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ShoppingService", function () {
+      return ShoppingService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var ShoppingService = /*#__PURE__*/function () {
+      function ShoppingService() {
+        _classCallCheck(this, ShoppingService);
+
+        this.saveShoppingList = [];
+      }
+
+      _createClass(ShoppingService, [{
+        key: "addItem",
+        value: function addItem(item) {
+          this.saveShoppingList.push(item);
+          console.log(this.saveShoppingList);
+        }
+      }, {
+        key: "getItems",
+        value: function getItems() {
+          return this.saveShoppingList;
+        }
+      }, {
+        key: "removeItem",
+        value: function removeItem(index) {
+          this.saveShoppingList.splice(index, 1);
+        }
+      }]);
+
+      return ShoppingService;
+    }();
+
+    ShoppingService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: "root"
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])], ShoppingService);
     /***/
   },
 
