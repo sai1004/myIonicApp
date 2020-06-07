@@ -6,6 +6,7 @@ import { IonicModule } from "@ionic/angular";
 import { ShoppingListPageRoutingModule } from "./shopping-list-routing.module";
 import { ShoppingListPage } from "./shopping-list.page";
 
+import { ShoppingService } from "../../services/shopping.service"
 @NgModule({
   imports: [
     CommonModule,
@@ -14,5 +15,6 @@ import { ShoppingListPage } from "./shopping-list.page";
     ShoppingListPageRoutingModule,
   ],
   declarations: [ShoppingListPage],
+  providers: [ShoppingService]
 })
 export class ShoppingListPageModule {}

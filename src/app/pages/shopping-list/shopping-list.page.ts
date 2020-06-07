@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Shopping } from "./Shopping";
+import { ShoppingService } from "../../services/shopping.service";
+import { ShoppingList } from "../../entities/ShoppingList";
 import { NgForm } from "@angular/forms";
 
 @Component({
@@ -8,23 +9,23 @@ import { NgForm } from "@angular/forms";
   styleUrls: ["./shopping-list.page.scss"],
 })
 export class ShoppingListPage implements OnInit {
+  savedList: any;
+
   @Input()
-  shopping: Shopping;
+  shoppingList: ShoppingList;
 
-  shoppingList: any[] = [];
-
-  constructor() {
-    this.shopping = new Shopping();
+  constructor(private _shoppingListService: ShoppingService) {
+    this.shoppingList = new ShoppingList();
+    this.savedList = _shoppingListService.getItems();
   }
 
   ngOnInit() {}
 
-  addItem(list: NgForm) {
-    this.shoppingList.push(list);
-    list.resetForm()
+  onAddItem(list: NgForm) {
+    this._shoppingListService.addItem(list);
   }
 
-  clearItems(listForm: any) {
-    listForm.rest();
+  onRemove(index: number) {
+    this._shoppingListService.removeItem(index);
   }
 }
