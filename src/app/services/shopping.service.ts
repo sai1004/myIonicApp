@@ -3,14 +3,15 @@ import { Injectable, Input } from "@angular/core";
 @Injectable({
   providedIn: "root",
 })
+
 export class ShoppingService {
   saveShoppingList: any[] = [];
 
-  constructor() {}
+  constructor() { }
 
   addItem(item: any) {
     this.saveShoppingList.push(item);
-    console.log(this.saveShoppingList);
+    // console.log(this.saveShoppingList);
   }
 
   getItems() {

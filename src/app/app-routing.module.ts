@@ -16,6 +16,7 @@ const routes: Routes = [
         (m) => m.DashboardModule
       ),
   },
+ 
 ];
 
 @NgModule({
