@@ -1,34 +1,34 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>signin</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content>
-  <div class="bg-img">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title> Login </ion-card-title>
-      </ion-card-header>
+<ion-content color="secondary">
+  <ion-card>
+    <ion-card-header class="ion-text-center">
+      <ion-card-title> Login </ion-card-title>
+    </ion-card-header>
 
-      <ion-card-content>
-        <form #singInForm="ngForm" (ngSubmit)="onLogin()">
-          <ion-list>
-            <ion-item>
-              <ion-label position="floating">Email: </ion-label>
-              <ion-input type="email" clearInput required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Password: </ion-label>
-              <ion-input type="password" clearInput required></ion-input>
-            </ion-item>
+    <ion-card-content>
+      <form #singInForm="ngForm" (ngSubmit)="onLogin()">
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Email: </ion-label>
+            <ion-input type="email" clearInput required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Password: </ion-label>
+            <ion-input type="password" clearInput required></ion-input>
+          </ion-item>
 
-            <div class="Login">
-              <button ion-button>Login</button>
-            </div>
-          </ion-list>
-        </form>
-      </ion-card-content>
-    </ion-card>
-  </div>
+          <div class="ion-margin-top">
+            <ion-button slot="end" type="submit" expand="block" [disabled]="!singInForm.valid"
+              routerLink="/dashboard/tabs/shopping">Login</ion-button>
+          </div>
+
+        </ion-list>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

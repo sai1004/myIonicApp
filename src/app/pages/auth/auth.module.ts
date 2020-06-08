@@ -9,7 +9,7 @@ import { SigninPage } from "../auth/signin/signin.page";
 
 const routes: Routes = [
   {
-    path: "",
+    path: "signin",
     component: SigninPage,
   },
 ];
