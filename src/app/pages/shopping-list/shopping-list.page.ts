@@ -27,8 +27,8 @@ export class ShoppingListPage implements OnInit {
 
   ngOnInit() {}
 
-  onAddItem(list: NgForm) {
-    this._shoppingListService.addItem(list);
+  onAddItem() {
+    this._shoppingListService.addItem(this.shoppingList);
   }
 
   onRemove(index: number) {
