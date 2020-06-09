@@ -25,7 +25,7 @@ export class ShoppingListPage implements OnInit {
     this.savedList = _shoppingListService.getItems();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onAddItem() {
     this._shoppingListService.addItem(this.shoppingList);
@@ -34,6 +34,10 @@ export class ShoppingListPage implements OnInit {
   onRemove(index: number) {
     this._shoppingListService.removeItem(index);
     this._appService.showMessage("Deleted SuccessFully.");
+  }
+
+  getDeleteIndex($event) {
+    this.deleteActionSheet($event);
   }
 
   async deleteActionSheet(index) {
