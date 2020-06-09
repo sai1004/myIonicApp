@@ -3,6 +3,7 @@ import { ShoppingService } from "../../services/shopping.service";
 import { ShoppingList } from "../../entities/ShoppingList";
 import { NgForm } from "@angular/forms";
 import { ActionSheetController, Platform } from "@ionic/angular";
+import { AppService } from "src/app/shared/utils/app.service";
 @Component({
   selector: "app-shopping-list",
   templateUrl: "./shopping-list.page.html",
@@ -17,7 +18,8 @@ export class ShoppingListPage implements OnInit {
   constructor(
     public platform: Platform,
     public actionSheetCtrl: ActionSheetController,
-    private _shoppingListService: ShoppingService
+    private _shoppingListService: ShoppingService,
+    private _appService: AppService
   ) {
     this.shoppingList = new ShoppingList();
     this.savedList = _shoppingListService.getItems();
@@ -31,6 +33,7 @@ export class ShoppingListPage implements OnInit {
 
   onRemove(index: number) {
     this._shoppingListService.removeItem(index);
+    this._appService.showMessage("Deleted SuccessFully.");
   }
 
   async deleteActionSheet(index) {

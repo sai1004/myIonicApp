@@ -6,6 +6,7 @@ import { FormsModule } from "@angular/forms";
 
 import { RouterModule, Routes } from "@angular/router";
 import { SigninPage } from "../auth/signin/signin.page";
+import { AppService } from 'src/app/shared/utils/app.service';
 
 const routes: Routes = [
   {
@@ -22,5 +23,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
   ],
+  providers:[AppService]
 })
 export class AuthModule {}

@@ -233,7 +233,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar class=\"ion-text-center\" color=\"primary\">\n    <ion-title> Shopping List </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n  <form #ShoppingListForm=\"ngForm\" (ngSubmit)=\"onAddItem(ShoppingListForm.value)\">\n    <ion-list>\n      <ion-item>\n        <ion-label position=\"fixed\"> Name </ion-label>\n        <ion-input type=\"text\" name=\"name\" [(ngModel)]=\"shoppingList.name\" placeholder=\"Milk\" clearInput required>\n        </ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"fixed\"> Amount </ion-label>\n        <ion-input type=\"number\" name=\"amount\" [(ngModel)]=\"shoppingList.amount\" placeholder=\"35\" clearInput required>\n        </ion-input>\n      </ion-item>\n    </ion-list>\n\n    <ion-button type=\"submit\" expand=\"block\" [disabled]=\"!ShoppingListForm.valid\">\n      add Item\n    </ion-button>\n  </form>\n\n  <ion-list class=\"scroll-items\">\n    <ion-item *ngFor=\"let i = index; let item of savedList\">\n      <h5>{{ item.name }} <span> {{ item.amount }} </span></h5>\n      <ion-button slot=\"end\" (click)=\"deleteActionSheet(i)\" color=\"secondary\">\n        <ion-icon name=\"trash\"></ion-icon>\n      </ion-button>\n    </ion-item>\n  </ion-list>\n\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar class=\"ion-text-center\" color=\"primary\">\n    <ion-title> Shopping List </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n  <form #ShoppingListForm=\"ngForm\" (ngSubmit)=\"onAddItem(ShoppingListForm.value)\">\n    <ion-list>\n      <ion-item>\n        <ion-label position=\"fixed\"> Name </ion-label>\n        <ion-input type=\"text\" name=\"name\" [(ngModel)]=\"shoppingList.name\" placeholder=\"Milk\" clearInput required>\n        </ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label position=\"fixed\"> Amount </ion-label>\n        <ion-input type=\"number\" name=\"amount\" [(ngModel)]=\"shoppingList.amount\" placeholder=\"35\" clearInput required>\n        </ion-input>\n      </ion-item>\n    </ion-list>\n\n    <ion-button type=\"submit\" expand=\"block\" [disabled]=\"!ShoppingListForm.valid\"  class=\"ion-margin-top\">\n      Add Item\n    </ion-button>\n  </form>\n\n  <ion-toolbar color=\"primary\"  class=\"ion-margin-top\" *ngIf=\"savedList.length > 0 \">\n    <ion-grid>\n      <ion-row>\n        <ion-col size=\"5\"> Name </ion-col>\n        <ion-col size=\"4\"> Price </ion-col>\n        <ion-col size=\"3\" class=\"ion-text-end\"> Delete </ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-toolbar>\n\n  <ion-list class=\"scroll-items\">\n    <ion-item *ngFor=\"let i = index; let item of savedList\">\n      <ion-grid>\n        <ion-row>\n          <ion-col size=\"6\"> {{ item.name }} </ion-col>\n          <ion-col size=\"4\"> {{ item.amount }} </ion-col>\n        </ion-row>\n      </ion-grid>\n      <ion-button slot=\"end\" (click)=\"deleteActionSheet(i)\" color=\"secondary\">\n        <ion-icon name=\"trash\"></ion-icon>\n      </ion-button>\n    </ion-item>\n  </ion-list>\n\n</ion-content>";
     /***/
   },
 
@@ -870,7 +870,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var routes = [{
       path: "",
-      redirectTo: "dashboard/tabs/shopping",
+      redirectTo: "auth/signin",
       pathMatch: "full"
     }, {
       path: "auth",
@@ -1887,8 +1887,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ShoppingService, [{
         key: "addItem",
         value: function addItem(item) {
-          this.saveShoppingList.push(item);
-          console.log(this.saveShoppingList);
+          this.saveShoppingList.push(item); // console.log(this.saveShoppingList);
         }
       }, {
         key: "getItems",

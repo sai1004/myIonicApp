@@ -1,4 +1,4 @@
 export class Auth {
-  email: string;
-  password: string;
+  email: string = "example@xyz.com";
+  password: string = "YouCantHackMe";
 }
