@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { ShoppingService } from "../../services/shopping.service";
+import { ShoppingService } from "./shopping.service";
 import { ShoppingList } from "../../entities/ShoppingList";
 import { NgForm } from "@angular/forms";
 import { ActionSheetController, Platform } from "@ionic/angular";
